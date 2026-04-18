@@ -1,14 +1,46 @@
+:root {
+    color-scheme: dark;
+    --bg-app: #0f1720;
+    --bg-sidebar: rgba(12, 20, 29, 0.92);
+    --bg-panel: rgba(18, 28, 39, 0.9);
+    --bg-surface: rgba(255, 255, 255, 0.06);
+    --bg-surface-strong: rgba(255, 255, 255, 0.1);
+    --bg-user: linear-gradient(135deg, #1d4ed8, #2563eb);
+    --bg-assistant: rgba(255, 255, 255, 0.05);
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --border-soft: rgba(148, 163, 184, 0.16);
+    --shadow-panel: 0 24px 60px rgba(2, 6, 23, 0.45);
+    --accent: #38bdf8;
+}
+
 * {
-    color: #ececec;
-    font-family: Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
+    box-sizing: border-box;
+    color: var(--text-primary);
+    font-family: "Segoe UI", "Inter", "Helvetica Neue", sans-serif;
+}
+
+html,
+body,
+#root {
+    min-height: 100%;
 }
 
 body {
     margin: 0;
-    padding: 0;
+    background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.15), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.12), transparent 24%),
+        var(--bg-app);
 }
 
 .app {
-    background-color: #212121;
+    min-height: 100vh;
     display: flex;
+}
+
+button,
+input {
+    font: inherit;
 }

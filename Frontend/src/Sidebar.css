@@ -1,87 +1,196 @@
 .sidebar {
-    background-color: #171717;
-    color: #b4b4b4;
-    height: 100vh;
+    background:
+        linear-gradient(180deg, rgba(15, 23, 32, 0.98), rgba(9, 15, 23, 0.95));
+    backdrop-filter: blur(16px);
+    border-right: 1px solid var(--border-soft);
     width: 320px;
+    min-width: 280px;
+    padding: 1.1rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: 1rem;
 }
 
-
-button {
+.newChatButton {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 10px;
-    padding: 10px;
-    border-radius: 5px;
-    background-color: transparent;
-    border: solid 0.5px rgba(255, 255, 255, 0.5);
+    gap: 1rem;
+    width: 100%;
+    padding: 0.9rem 1rem;
+    border-radius: 18px;
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.09);
     cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.newChatButton:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: rgba(56, 189, 248, 0.3);
+    transform: translateY(-1px);
+}
+
+.newChatButtonContent {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+}
+
+.newChatText {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.15rem;
+}
+
+.newChatText strong {
+    font-size: 0.96rem;
+    font-weight: 600;
+}
+
+.newChatText span {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
 }
 
 .logo {
-    height: 25px;
-    width: 25px;
-    background-color: #fff;
-    border-radius: 50%;
+    height: 42px;
+    width: 42px;
+    border-radius: 14px;
     object-fit: cover;
+    display: block;
+    box-shadow: 0 10px 24px rgba(88, 28, 135, 0.28);
 }
 
-button span {
-    font-size: 20px;
+.newChatIcon {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.08);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-primary);
 }
 
-button:hover {
-    background-color: rgba(180, 180, 180, 0.05);
+.historyPanel {
+    flex: 1;
+    min-height: 0;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 22px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.historyHeader {
+    padding: 1rem 1rem 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--text-secondary);
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
 }
 
 .history {
-    margin: 10px;
-    padding: 10px;
+    margin: 0;
+    padding: 0.4rem 0.65rem 0.75rem;
     height: 100%;
+    overflow-y: auto;
 }
 
 .history li {
     list-style-type: none;
     cursor: pointer;
-    padding: 2px 5px;
-    margin-bottom: 0.3rem;
-    font-size: 14px;
-    border: solid 10px transparent;
+    padding: 0.8rem 0.85rem;
+    margin-bottom: 0.45rem;
+    font-size: 0.92rem;
+    border: 1px solid transparent;
     position: relative;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    color: var(--text-secondary);
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
 .history li:hover {
-    background-color: rgba(180, 180, 180, 0.05);
-    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+}
+
+.threadTitle {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.emptyHistory {
+    cursor: default !important;
+    color: var(--text-muted) !important;
+    line-height: 1.5;
+    background: transparent !important;
+    border-color: transparent !important;
+}
+
+.deleteThreadButton {
+    border: 0;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    opacity: 0;
+    color: var(--text-secondary);
+    transition: opacity 0.2s ease, color 0.2s ease;
 }
 
 .sign {
-    padding: 10px;
-    margin: 10px;
-    font-size: 14px;
-    text-align: center;
-    border-top: solid 0.25px rgba(255, 255, 255, 0.5);
+    padding: 1rem 0.35rem 0.1rem;
+    border-top: 1px solid var(--border-soft);
 }
 
-.fa-trash {
-    opacity: 0;
-    position: absolute;
-    right: 0;
+.sign p {
+    margin: 0;
+    font-size: 0.92rem;
+    font-weight: 600;
 }
 
-.history li:hover .fa-trash {
+.sign span {
+    display: inline-block;
+    margin-top: 0.35rem;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    line-height: 1.45;
+}
+
+.history li:hover .deleteThreadButton,
+.highlighted .deleteThreadButton {
     opacity: 1;
-    color: #fff;
 }
 
-.fa-trash:hover {
-    color: #f87171 !important;
+.deleteThreadButton:hover {
+    color: #fda4af;
 }
 
 .highlighted {
-    background-color: rgba(180, 180, 180, 0.05);
-    border-radius: 10px;
+    background: rgba(56, 189, 248, 0.12) !important;
+    border-color: rgba(56, 189, 248, 0.18) !important;
+    color: var(--text-primary) !important;
+}
+
+@media (max-width: 960px) {
+    .sidebar {
+        width: 100%;
+        min-width: 0;
+        max-height: 290px;
+        border-right: 0;
+        border-bottom: 1px solid var(--border-soft);
+    }
 }
